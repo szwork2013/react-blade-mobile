@@ -1,0 +1,39 @@
+.user .table table {
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.user .table table td {
+  padding: 0.2rem 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.user .table table th {
+  border-collapse: separate;
+  border-bottom: 1px solid #ddd;
+  padding: 0.22rem 0;
+  background-color: #eee;
+}
+
+.user .secTab {
+  align-items: center;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.user .secTab a {
+  flex: 1;
+  display: block;
+  text-align: center;
+  padding-bottom: 0.2rem;
+  color: #333;
+  border-bottom: 4px solid transparent;
+}
+
+.user .secTab a.active {
+  color: #108EE9;
+  border-bottom-color: #108EE9;
+}

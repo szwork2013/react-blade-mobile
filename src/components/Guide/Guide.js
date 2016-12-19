@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Icon from 'antd-mobile/lib/icon/index.web'
-import { browserHistory, IndexLink, Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 import './Guide.scss'
 
 const PlaceHolder = (props) => (
@@ -34,18 +34,18 @@ export default class Guide extends Component {
             <Icon type="desktop" />
             <div className='label'>首页</div>
           </IndexLink>
-          <IndexLink to='/counter' activeClassName='active'>
+          <Link to='/counter' activeClassName='active'>
             <Icon type="bar-chart" />
             <div className='label'>统计</div>
-          </IndexLink>
-          <IndexLink to='/user' activeClassName='active'>
+          </Link>
+          <Link to='/user' activeClassName='active'>
             <Icon type="setting" />
             <div className='label'>账户</div>
-          </IndexLink>
-          <IndexLink to='/nofound' activeClassName='active'>
+          </Link>
+          <Link to='/nofound' activeClassName='active'>
             <Icon type="search" />
             <div className='label'>空页面</div>
-          </IndexLink>
+          </Link>
         </div>
       </div>
     )

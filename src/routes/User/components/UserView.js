@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import { Row, Col, Card, Input, Button, Tabs, Menu } from 'antd'
-import { browserHistory } from 'react-router'
+import { Row, Col, Card, Input, Tabs, Menu } from 'antd'
+import Button from 'antd-mobile/lib/button/index.web'
+import List from 'antd-mobile/lib/list/index.web'
+import InputItem from 'antd-mobile/lib/input-item/index.web'
+import { IndexLink, Link } from 'react-router'
 import handleChange from 'UTIL/handleChange'
-import List from './ListView'
-const InputGroup = Input.Group
-const TabPane = Tabs.TabPane
-const SubMenu = Menu.SubMenu
+import ListTable from './ListView'
+import './UserView.scss'
 
 export default class UserView extends Component {
   static propTypes = {
@@ -18,7 +19,6 @@ export default class UserView extends Component {
     super(props, context)
     this.state = { 
       uidVal: this.props.user.uid,
-      current: '/user',
       loadUid: false,
       groups: [
         {
@@ -39,22 +39,17 @@ export default class UserView extends Component {
         {
           name: '南昌银行',
           city: '南昌',
-          time: '2016-12-03'
+          time: '2016-12-04'
         },
         {
           name: '广发银行',
           city: '广州',
-          time: '2016-12-03'  
+          time: '2016-12-05'  
         }  
       ]
     }
     // 将handleChange方法绑定在this上
     this.handleChange = handleChange.bind(this)
-    browserHistory.listen(() => {
-      this.setState({
-        current: browserHistory.getCurrentLocation().pathname
-      })
-    })
   }
 
   asynsGetUid () {
@@ -76,85 +71,68 @@ export default class UserView extends Component {
     })
   }
 
-  handleItemClick (item,index,childState) {
-      console.log(item, 'is clicked')
-  }
-
-  handlePage (e) {
-    this.setState({
-      current: e.key
-    })
-    browserHistory.push(e.key)
-  }
-
-  componentDidMount () {
-    this.setState({
-      current: browserHistory.getCurrentLocation().pathname
-    })
-  }
-
   render() {
     let groups = this.state.groups
     let list = groups.map(
       (item, i) => {
         return (
-          <p key={i} style={{lineHeight: '24px'}}>
-            <span className='mr10'>银行名称：{item.name}</span>
-            <span className='mr10'>所在城市：{item.city}</span>
-            <span className='mr10'>注册时间：{item.time}</span>
-          </p> 
+          <tr key={i}>
+            <td>{item.name}</td>
+            <td>{item.city}</td>
+            <td>{item.time}</td>
+          </tr> 
         ) 
       }
     )
     return (
-      <div className="content">
-        <div className='content-cell'>
-          <h3>生成列表的两种方式</h3>
-          <Row style={{padding: '15px 0 10px'}}>
-            <Col span={12} style={{padding: '0 10px'}}>
-              <Card title="节点循环">
+      <div className="user">
+        <div className='row-content' style={{padding: '0.2rem'}}>
+          <h4 style={{margin: '0.2rem 0'}}>生成列表的两种方式</h4>
+          <h5 style={{margin: '0.2rem 0'}}>节点循环</h5>
+          <div className='table'>
+            <table>
+              <thead>
+                <tr>
+                  <th>银行名称</th>
+                  <th>所在城市</th>
+                  <th>注册时间</th>
+                </tr>
+              </thead>
+              <tbody>
                 {list}
-              </Card>
-            </Col>
-            <Col span={12} style={{padding: '0 10px'}}>
-              <Card title="模板嵌套">
-                <List groups={groups}/>
-              </Card>
-            </Col>
-          </Row>
+              </tbody>
+            </table>
+          </div>
+          <h5 style={{margin: '0.2rem 0'}}>模板嵌套</h5>
+          <ListTable groups={groups}/>
         </div>
-        <div className='content-cell'>
-          <Tabs defaultActiveKey="1" style={{marginBottom: '20px'}}>
-            <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-            <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-            <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
-          </Tabs>
-          <Row type="flex" justify="space-between">
-            <Col span={16}>
-              <InputGroup size="large">
-                <Col span="6">
-                  <Input defaultValue="UID" disabled/>
-                </Col>
-                <Col span="12">
-                  <Input placeholder='点击获取uid' name="uidVal" value={this.state.uidVal} onChange={this.handleChange}/>
-                </Col>
-              </InputGroup>
-            </Col>
-            <Col span={8} style={{width: '240px'}}>
-              <Button type="primary" className='mr10' onClick={e => this.clearUid()}>
-                设置默认UID
-              </Button>
-              <Button type="primary" loading={this.state.loadUid} onClick={e => this.asynsGetUid()}>
-                同步获取UID
-              </Button>
-            </Col>
-          </Row>
+
+        <List>
+          <InputItem
+            placeholder="请设置UID"
+            name="uidVal" 
+            value={this.state.uidVal} 
+            onChange={this.handleChange}
+          >UID</InputItem>
+        </List>
+        <div style={{padding: '0.3rem', textAlign: 'center'}}>
+          <Button type="ghost" inline onClick={e => this.clearUid()} style={{marginRight: '0.3rem'}}>
+            设置默认UID
+          </Button>
+          <Button type="primary" inline loading={this.state.loadUid} onClick={e => this.asynsGetUid()}>
+            同步获取UID
+          </Button>
         </div>
-        <div className='content-cell'>
-          <Menu onClick={e => this.handlePage(e)} selectedKeys={[this.state.current]} mode="horizontal">
-            <Menu.Item key="/user">账户信息完善</Menu.Item>
-            <Menu.Item key="/user/review">账户信息一览</Menu.Item>
-          </Menu>
+
+        <div className='row-content'>
+          <div className='secTab'>
+            <IndexLink to='/user' activeClassName='active'>
+              账户信息完善
+            </IndexLink>
+            <Link to='/user/review' activeClassName='active'>
+              账户信息一览
+            </Link>
+          </div>
           { this.props.children }
         </div>
       </div>
