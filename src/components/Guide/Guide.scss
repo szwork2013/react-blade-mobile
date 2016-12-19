@@ -1,0 +1,33 @@
+.guide {
+  height: 1.03rem;
+  width: 100%;
+}
+
+.gideBar {
+  align-items: center;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.gideBar a {
+  flex: 1;
+  display: block;
+  text-align: center;
+  padding: 0.16rem 0 0.12rem;
+  color: #666;
+  font-size: 0.36rem;
+}
+
+.gideBar a.active {
+  color: #108EE9;
+}
+
+.gideBar a .label {
+  font-size: 0.24rem;
+  padding-top: 0.06rem;
+}
