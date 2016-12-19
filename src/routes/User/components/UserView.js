@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import { Row, Col, Card, Input, Tabs, Menu } from 'antd'
 import Button from 'antd-mobile/lib/button/index.web'
 import List from 'antd-mobile/lib/list/index.web'
 import InputItem from 'antd-mobile/lib/input-item/index.web'
