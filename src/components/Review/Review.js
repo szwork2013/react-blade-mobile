@@ -67,24 +67,13 @@ export default class Review extends Component {
     ) 
 
     let noData = () => (
-      <div style={{width: '100%', textAlign: 'center', fontSize: '20px', padding: '20px 0'}}>
+      <div style={{width: '100%', textAlign: 'center', fontSize: '0.32rem', padding: '0.6rem 0'}}>
         暂未填写信息！
       </div>
     )
 
     return (
-      <div>
-        <Collapse defaultActiveKey={['1']} onChange={callback} style={{margin: '20px 0'}}>
-          <Panel header="This is panel header 1" key="1">
-            <p>{text}</p>
-          </Panel>
-          <Panel header="This is panel header 2" key="2">
-            <p>{text}</p>
-          </Panel>
-          <Panel header="This is panel header 3" key="3">
-            <p>{text}</p>
-          </Panel>
-        </Collapse>
+      <div className='review'>
         {regData ? dataList(regData) : noData()}
       </div>
     )
