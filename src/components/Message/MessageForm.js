@@ -24,6 +24,10 @@ export default class MessageForm extends Component {
     browserHistory.push('/user/review')
   }
 
+  componentWillMount () {
+    this.setState({nickname: this.props.mineName})
+  }
+
   render() {
     return (
       <div className='messageForm'>
