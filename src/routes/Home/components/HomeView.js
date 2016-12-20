@@ -17,6 +17,8 @@ const data = Array.from(new Array(8)).map((_val, i) => ({
   text: `项目${i}`
 }))
 
+// 每个组件还有 componentWillMount，componentDidMount，componentWillUpdate，componentDidUpdate，componentWillUnmount 五种方法
+
 export default class HomeView extends Component {
   constructor(props) {
     super(props)

@@ -18,8 +18,7 @@ export default class NotFound extends Component {
 
   componentDidMount () {
     Toast.info('加载失败!', 1)
-    let timer,
-        self = this
+    let self = this
 
     let counter = () => {
       let t = this.state.second
@@ -29,15 +28,23 @@ export default class NotFound extends Component {
       } else {
         t--
       }
-      timer = setTimeout(() => {
-        self.setState({second: t})
-        clearTimeout(timer)
+      self.timer = setTimeout(() => {
+        if (self.setState) {
+          self.setState({second: t})
+        } else {
+          clearTimeout(self.timer)
+        }
+        clearTimeout(self.timer)
         counter()
       }, 1000)
     }
 
     counter()
 
+  }
+
+  componentWillUnmount () {
+    clearTimeout(this.timer)
   }
 
   render () {
