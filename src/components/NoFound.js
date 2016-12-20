@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { message } from 'antd'
 import Result from 'antd-mobile/lib/result/index.web'
 import Toast from 'antd-mobile/lib/toast/index.web'
 

@@ -1,6 +1,6 @@
 {
   "name": "react-blade-mobile",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Get started with React, Redux, and React-Router!",
   "main": "index.js",
   "engines": {
@@ -56,7 +56,6 @@
   "author": "Aford",
   "license": "MIT",
   "dependencies": {
-    "antd": "^2.5.2",
     "antd-mobile": "^0.9.12",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
