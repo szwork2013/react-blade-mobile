@@ -1,69 +1,24 @@
 ﻿import React, { Component } from 'react'
-import { Collapse, Table } from 'antd'
-const Panel = Collapse.Panel
+import Button from 'antd-mobile/lib/button/index.web'
+import Table from 'antd-mobile/lib/table/index.web'
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`
-
-function callback(key) {
-  console.log(key)
-}
-
-const columns = [{
-  title: '邮箱',
-  dataIndex: 'email',
-  key: 'email'
-}, {
-  title: '密码',
-  dataIndex: 'password',
-  key: 'password'
-}, {
-  title: '密码确认',
-  dataIndex: 'confirm',
-  key: 'confirm'
-}, {
-  title: '手机号码',
-  dataIndex: 'phone',
-  key: 'phone'
-}, {
-  title: '昵称',
-  dataIndex: 'nickname',
-  key: 'nickname'
-}, {
-  title: '验证码',
-  dataIndex: 'captcha',
-  key: 'captcha'
-}, {
-  title: '地址',
-  key: 'residence',
-  dataIndex: 'residence',
-  render: (text) => (
-    <span>
-      <span>{text[0]}</span>/
-      <span>{text[1]}</span>/
-      <span>{text[2]}</span>
-    </span>
-  )
-}]
+const columns = [
+  { title: '昵称', dataIndex: 'nickname', key: 'nickname' },
+  { title: '邮箱', dataIndex: 'email', key: 'email' },
+  { title: '密码', dataIndex: 'password', key: 'password' },
+  { title: '手机号码', dataIndex: 'phone', key: 'phone' }
+]
 
 export default class Review extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
-  }
-
   render() {
-    let { regData } = this.props
-    let dataList = (regData) => (
-      <div>
-        <Table columns={columns} dataSource={[regData]} />
-      </div>
+    let { router, regData } = this.props
+
+    let dataList = (data) => (
+      <Table
+        columns={columns}
+        dataSource={data}
+      />
     ) 
 
     let noData = () => (
@@ -73,8 +28,11 @@ export default class Review extends Component {
     )
 
     return (
-      <div className='review'>
+      <div className='review' style={{padding: '0.2rem 0.2rem 0'}}>
         {regData ? dataList(regData) : noData()}
+        <Button type="primary" onClick={router.goBack} style={{marginTop: '0.2rem'}}>
+          返回上一页
+        </Button>
       </div>
     )
   }

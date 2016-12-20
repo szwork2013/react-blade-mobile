@@ -122,7 +122,7 @@ export default class CounterView extends Component {
             </List.Item>
             <List.Item
               extra={
-                <Button type="ghost" size="small" inline loading={this.state.loading} onClick={e => this.enterLoading(e)}>延时异步加</Button>
+                <Button type="ghost" size="small" inline loading={this.state.loading} onClick={e => this.enterLoading(e)}>延时异步乘加</Button>
               }
               multipleLine
             >

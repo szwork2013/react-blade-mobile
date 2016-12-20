@@ -3,7 +3,6 @@ import Button from 'antd-mobile/lib/button/index.web'
 import List from 'antd-mobile/lib/list/index.web'
 import InputItem from 'antd-mobile/lib/input-item/index.web'
 import { IndexLink, Link } from 'react-router'
-import handleChange from 'UTIL/handleChange'
 import ListTable from './ListView'
 import './UserView.scss'
 
@@ -47,8 +46,6 @@ export default class UserView extends Component {
         }  
       ]
     }
-    // 将handleChange方法绑定在this上
-    this.handleChange = handleChange.bind(this)
   }
 
   asynsGetUid () {
@@ -108,10 +105,9 @@ export default class UserView extends Component {
 
         <List>
           <InputItem
-            placeholder="请设置UID"
-            name="uidVal" 
+            placeholder="点击获取UID"
+            editable={false}
             value={this.state.uidVal} 
-            onChange={this.handleChange}
           >UID</InputItem>
         </List>
         <div style={{padding: '0.3rem', textAlign: 'center'}}>
