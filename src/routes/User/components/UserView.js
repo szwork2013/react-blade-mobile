@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Button from 'antd-mobile/lib/button/index.web'
 import List from 'antd-mobile/lib/list/index.web'
 import InputItem from 'antd-mobile/lib/input-item/index.web'
+import Toast from 'antd-mobile/lib/toast/index.web'
 import { IndexLink, Link } from 'react-router'
 import ListTable from './ListView'
 import './UserView.scss'
@@ -67,6 +68,10 @@ export default class UserView extends Component {
     })
   }
 
+  componentWillMount () {
+    Toast.hide()
+  }
+    
   render() {
     let groups = this.state.groups
     let list = groups.map(

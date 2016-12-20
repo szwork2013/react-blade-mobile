@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Carousel from 'antd-mobile/lib/carousel/index.web'
 import Grid from 'antd-mobile/lib/grid/index.web'
 import List from 'antd-mobile/lib/list/index.web'
+import Toast from 'antd-mobile/lib/toast/index.web'
 import './HomeView.scss'
 import v1Image from '../assets/v1.jpg'
 import v2Image from '../assets/v2.jpg'
@@ -24,6 +25,10 @@ export default class HomeView extends Component {
     }
   }
 
+  componentWillMount () {
+    Toast.hide()
+  }
+    
   render () {
     let itemHeight = window.clientWidth * 445 / 960
     return (

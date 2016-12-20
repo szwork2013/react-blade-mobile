@@ -12,7 +12,11 @@ export default class NotFound extends Component {
     this.state = { second: 3 }
   }
 
-  componentWillMount() {
+  componentWillMount () {
+    Toast.hide()
+  }
+
+  componentDidMount () {
     Toast.info('加载失败!', 1)
     let timer,
         self = this

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Button from 'antd-mobile/lib/button/index.web'
 import List from 'antd-mobile/lib/list/index.web'
+import Toast from 'antd-mobile/lib/toast/index.web'
 import echarts, { line, tooltip } from 'echarts'
 import './CounterView.scss'
 const ButtonGroup = Button.Group
@@ -27,7 +28,12 @@ export default class CounterView extends Component {
     self.props.doubleAsync(() => self.setState({ loading: false }))
   }
 
+  componentWillMount () {
+    Toast.hide()
+  }
+
   componentDidMount () {
+
     let chartTheme = {
       tooltip : {
         trigger: 'axis'
