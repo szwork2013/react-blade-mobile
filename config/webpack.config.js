@@ -108,7 +108,7 @@ if (__DEV__) {
   )
 }
 
-// 在测试过程中不要分割bundle，此时仅需一个bundle
+// 在测试过程中不要分割bundle
 if (!__TEST__) {
   webpackConfig.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
