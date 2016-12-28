@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import * as CK from 'UTIL/cookie'
 import Carousel from 'antd-mobile/lib/carousel/index.web'
 import Grid from 'antd-mobile/lib/grid/index.web'
 import List from 'antd-mobile/lib/list/index.web'
@@ -23,6 +24,10 @@ export default class HomeView extends Component {
 
   componentWillMount () {
     Toast.hide()
+    // cookie 设置方法
+    // CK.SetCookie('userID', 'sgvbaethb244q3trf43t6gvgew4v54')
+    // console.log(CK.GetCookie('userID'))
+    // CK.DeleteCookie('userID')
   }
     
   render () {
